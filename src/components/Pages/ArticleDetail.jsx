@@ -48,7 +48,7 @@ const ArticleDetail = () => {
 
       {/* Article Detail View */}
       <div className="container mt-5">
-        <p>{article.body}</p>
+        <p className="">{article.body}</p>
             <ul className="d-flex flex-wrap">
               {article.tagList.map((tag, index) => (
                 <li key={index} className="badge badge-pill border">
