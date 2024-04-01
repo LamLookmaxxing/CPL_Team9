@@ -12,7 +12,7 @@ function Register() {
             </p>
 
             <ul className="error-messages">
-              <li>That email is already taken</li>
+              <li>That email is already </li>
             </ul>
 
             <form>
