@@ -1,6 +1,6 @@
 import HomePage from './components/Pages/HomePage';
-import ArticleDetail from './components/Pages/ArticleDetail';
-import Headers from './components/Layout/Headers';
+
+import Header from './components/Layout/Headers';
 import Footer from './components/Layout/Footer';
 import Login from './components/Authentication/Login'
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Headers />
+        <Header />
         <Routes>
         <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
