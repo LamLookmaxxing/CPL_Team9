@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import ArticlePreview from '../Articles/ArticlePreview';
+import { NavLink } from 'react-router-dom';
 const HomePage = () => {
   const [article, setArticle] = useState([]);
   const [status, setStatus] = useState(false);
@@ -26,26 +27,31 @@ const HomePage = () => {
             <p className="text-white  fs-4">A place to share your knowledge.</p>
           </div>
         </div>
-        <div class="container page">
+        <div class="container w-75">
           <div className='row'>
             <div className='col-8'>
               <div className="feed-toggle">
                 <ul className="nav nav-pills outline-active">
-                  <li className="nav-item">
-                    <a href="#" className={`nav-link `}>
+                  <li className="border-bottom border-success ">
+                    <NavLink className='text-success' to="#" style={{
+                      textDecoration:'none'
+                    }}>
                       Global Feed
-                    </a>
+                    </NavLink>
                   </li>
                 </ul>
               </div>
 
               <div>
                 {status ? (
-                  <ArticlePreview article={article} />
+                  article.map((article, index) => (
+                    <ArticlePreview key={index} article={article} />
+                  ))
                 ) : (
-                  <span >Load More</span>
+                  <span>Loading Article...</span>
                 )}
               </div>
+
             </div>
             <div className='col-4'>
 
