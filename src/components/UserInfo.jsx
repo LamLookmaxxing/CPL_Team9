@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Profile() {
+function UserInfo() {
   const [profileData, setProfileData] = useState(null);
   const [following, setFollowing] = useState(false);
 
@@ -48,12 +48,13 @@ function Profile() {
                 </h4>
                 <p>{profileData.bio}</p>
                 <div className="col-xs-12 col-md-6 offset-md-6" style={{ textAlign: 'right' }}>
-                <button
-                className="btn btn-sm btn-primary"
-                style={{ padding: '0.2rem 0.5rem', fontSize: '0.8rem' }}
-                >
-                <i className="fas fa-user" style={{ marginRight: '5px' }}></i> Edit Profile Settings
-                </button>
+                  <button
+                    onClick={handleFollowToggle}
+                    className={`btn btn-sm ${following ? 'btn-secondary' : 'btn-primary'}`}
+                    style={{color: '#000', padding: '0.2rem 0.5rem', fontSize: '0.8rem' }}
+                  >
+                    {following ? `+ Unfollow ${profileData.username}` : `+ Follow ${profileData.username}`}
+                  </button>
                 </div>
               </div>
             </div>
@@ -140,4 +141,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserInfo;
