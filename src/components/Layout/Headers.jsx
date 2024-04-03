@@ -1,24 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Header() {
+function Headers() {
+  const authToken = localStorage.getItem('token');
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    // Điều hướng người dùng về trang chủ hoặc trang đăng nhập sau khi đăng xuất
+    window.location.href = '/';
+  };
+
   return (
-    <nav className="navbar navbar-light bg-light">
-      <div className="container">
-        <a className="navbar-brand" href="/">conduit</a>
-        <ul className="nav navbar-nav ms-auto"> {/* Thay đổi ở đây là ms-auto để đẩy nội dung sang phải, tương tự như pull-xs-right trong Bootstrap cũ */}
-          <li className="nav-item">
-            <a className="nav-link active" href="/">Home</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/login">Sign in</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/register">Sign up</a>
-          </li>
+    <header>
+      <nav>
+        <ul style={{ listStyleType: 'none', display: 'flex', justifyContent: 'space-around' }}>
+          <li><Link to="/">Home</Link></li>
+          {authToken ? (
+            // Nếu người dùng đã đăng nhập
+            <>
+              <li><Link to="/editor">New Article</Link></li>
+              <li><Link to="/settings">Settings</Link></li>
+              <li><button onClick={handleLogout}>Logout</button></li>
+            </>
+          ) : (
+            // Nếu người dùng chưa đăng nhập
+            <>
+              <li><Link to="/login">Sign in</Link></li>
+              <li><Link to="/register">Sign up</Link></li>
+            </>
+          )}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }
 
-export default Header;
+export default Headers;

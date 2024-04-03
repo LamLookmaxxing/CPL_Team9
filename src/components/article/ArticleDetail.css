@@ -1,0 +1,45 @@
+.banner {
+    background-color: #333333;
+    color: #ffffff;
+    grid-area: auto;
+    line-height: 24px;
+    margin: 0px 0px 32px;
+    padding: 32px 0px;
+}
+
+.banner h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+.article {
+    color: #ffffff;
+    font-weight: 300;
+    grid-area: auto;
+    line-height: 24px;
+    margin: 32px 0px 0px;
+}
+
+.scrip {
+    font-size: 19.2px;
+    line-height: 28.8px;
+    margin: 0px 0px 32px;
+}
+
+.badge.badge-pill.border {
+    background-position: 0px 0px;
+    border-radius: 160px;
+    color: #aaaaaa;
+    display: inline-block;
+    font-size: 12.8px;
+
+    grid-area: auto;
+    line-height: 19.2px;
+
+    margin: 0px 3px 3.2px 0px;
+    padding: 1.6px 7.68px;
+    text-align: left;
+
+
+}
