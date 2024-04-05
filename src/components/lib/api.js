@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Constants
-const TOKEN_KEY = "refine-auth";
+const TOKEN_KEY = "token";
 const API_URL = "https://api.realworld.io/api";
 
 // Helper function to get the token from local storage
@@ -56,7 +56,7 @@ export const deleteArticle = async (slug) => {
 
 export const getComments = async (slug) => {
   try {
-    const response = await axios.get(`/articles/${slug}/comments`);
+    const response = await api.get(`/articles/${slug}/comments`);
     return response.data; // Giả sử response.data chứa mảng bình luận
   } catch (error) {
     console.error("Error getting comments:", error);
@@ -65,7 +65,7 @@ export const getComments = async (slug) => {
 };
 
 // Create a comment
-export const createComment = async (slug, commentBody) => {
+export const  createComment = async (slug, commentBody) => {
   try {
     const response = await api.post(`/articles/${slug}/comments`, { comment: { body: commentBody } });
     console.log(response.data);

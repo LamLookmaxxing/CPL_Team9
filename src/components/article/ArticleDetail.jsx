@@ -64,9 +64,6 @@ const ArticleDetail = () => {
             </li>
           ))}
         </ul>
-        {/* Comments Section */}
-        <CommentForm slug={articleSlug} onCommentPosted={triggerCommentsRefresh} />
-        <CommentList slug={articleSlug} refreshComments={refreshComments} />
 
       </div>
     </>
