@@ -40,7 +40,7 @@ const Header = () => {
       <div className='row'>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-        <div className='col-9'>
+        <div className='col-8'>
             <Link className="navbar-brand" to="/" style={brandStyle}>conduit</Link>
             <button className="navbar-toggler" type="button" data-toggle="collapse"
               data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -82,14 +82,7 @@ const Header = () => {
                       </NavLink>
                     </li>
                   )}
-                  <li className="nav-item">
-                    <button
-                      className="btn btn-link nav-link"
-                      onClick={handleLogout}
-                    >
-                      Logout
-                    </button>
-                  </li>
+              
                 </>
               ) : (
                 <>

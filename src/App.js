@@ -39,9 +39,11 @@ function App() {
             <Route path="/edit/:slug" element={<EditArticle />} />
           </Routes>
           <Footer></Footer>
+          
         </BrowserRouter>
       </AuthProvider>
     </FavoriteProvider>
+    
   );
 }
 

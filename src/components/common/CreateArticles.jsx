@@ -59,13 +59,13 @@ const CreateArticles = () => {
   };
 
   return (
-    <div className="container-create-article mt-5">
-      <h2>Create Article</h2>
+    <div className="container-create-article mt-5 ">
+      <h2 style={{textAlign: "center", marginBottom: "30px"}}>Create Article</h2>
 
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
 
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-3 col-md-8 offset-md-2 col-xs-12">
           <input
             type="text"
             className="form-control"
@@ -76,7 +76,7 @@ const CreateArticles = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-8 offset-md-2 col-xs-12">
           <input
             type="text"
             className="form-control"
@@ -87,7 +87,7 @@ const CreateArticles = () => {
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-8 offset-md-2 col-xs-12">
           <textarea
             className="form-control"
             placeholder="Write your article"
@@ -97,17 +97,17 @@ const CreateArticles = () => {
           ></textarea>
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-8 offset-md-2 col-xs-12">
           <input
             type="text"
             className="form-control"
-            placeholder="Enter tags (comma-separated)"
+            placeholder="Enter tags"
             value={tagList}
             onChange={(e) => setTagList(e.target.value)}
           />
         </div>
 
-        <div className="mb-3">
+        <div className="mb-3 col-md-8 offset-md-2 col-xs-12">
           <button
             type="submit"
             className="btn btn-success"

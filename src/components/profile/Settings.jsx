@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./setting.css";
-
+import { useAuth } from "../application/Authen";
 const Settings = () => {
   const [image, setImage] = useState("");
   const [username, setUsername] = useState("");
@@ -10,6 +10,7 @@ const Settings = () => {
   const [bio, setBio] = useState("");
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
+  const { isLoggedIn, handleLogout } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,9 +130,15 @@ const Settings = () => {
                 required
               />
             </fieldset>
-            <button type="submit" className="btn">
+            <button type="submit" className="btn btn-success">
               Update Settings
             </button>
+            <br/>
+            <br/>
+            <button
+            className=" btn btn-outline-danger"
+             onClick={() => { handleLogout(); navigate(`/`) }}>Or click here to logout.</button>
+
           </form>
         </div>
       </div>

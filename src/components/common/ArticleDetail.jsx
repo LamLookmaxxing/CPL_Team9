@@ -266,18 +266,22 @@ const ArticleDetail = () => {
           <div className="banner">
             <div className="container">
               <h1>{article.title}</h1>
-              <div className="article-meta">
-                <img src={article.author.image} alt="Image" />
+              <div className="article-meta d-flex gap-2">
+                <img  src={article.author.image} alt="Image" />
+                <div className="d-flex flex-column">
                 <Link className="author" to={`/profileAuthor/${article.author.username}`}>
                   {article.author.username}
                 </Link>
-                <span className="date">
+                
+                <span className="date ">
                   {new Date(article.createdAt).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
                     day: "numeric",
                   })}
                 </span>
+                </div>
+             
                 {token && article.author.username === usernameState ? (
                   <>
                     <button onClick={handleEditClick} className="btn btn-outline-secondary btn-sm">
