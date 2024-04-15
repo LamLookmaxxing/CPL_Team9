@@ -1,0 +1,72 @@
+.form-control {
+    background-color: #ffffff;
+    border-radius: 4px;
+    color: #55595c;
+    font-family: 'Source Sans Pro', sans-serif;
+    grid-area: auto;
+    line-height: 20px;
+    padding: 20px;
+  }
+
+.card-footer{
+    background-color: #f5f5f5;
+    border-color: #e5e5e5;
+    border-radius: 0px 0px 4px 4px;
+    border-style: solid none none;
+    border-width: 1px 0px 0px;
+    color: #373a3c;
+    font-size: 12.8px;
+    font-weight: 300;
+    grid-area: auto;
+    line-height: 19.2px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: "center";
+}
+
+.card {
+    background-color: #ffffff;
+    border-color: #e5e5e5;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    color: #373a3c;
+    grid-area: auto;
+    line-height: 24px;
+    margin: 0px 0px 12px;
+
+    
+  }
+
+.post-comment {
+    align-items: flex-start;
+    background-color: #449d44;
+    border-color: #419641;
+    border-radius: 3.2px;
+    border-style: solid;
+    border-width: 1px;
+    color: #ffffff;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    grid-area: auto;
+    line-height: 17.5px;
+    padding: 4px 8px;
+    text-align: center;
+}
+.card-block{
+    color: #373a3c;
+    grid-area: auto;
+    line-height: 24px;
+    padding: 20px;
+}
+.comment-author {
+    color: #3d8b3d;
+    display: inline-block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 12.8px;
+    font-weight: 300;
+    grid-area: auto;
+    line-height: 19.2px;
+  }

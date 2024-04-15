@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import style from "./Comment.module.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import './AddComment.css';
 
 const Comments = () => {
   const { slug } = useParams();
@@ -69,7 +69,8 @@ const Comments = () => {
   const handleCommentChange = (e) => {
     setCommentBody(e.target.value);
   };
-  const handlePostComment = () => {
+  const handlePostComment = (event) => {
+    event.preventDefault();  // Prevent the form from causing a page reload
     fetch(`https://api.realworld.io/api/articles/${slug}/comments`, {
       method: "POST",
       headers: {
@@ -96,6 +97,7 @@ const Comments = () => {
         setError(error.message);
       });
   };
+
   const handleDeleteComment = (commentId) => {
     fetch(
       `https://api.realworld.io/api/articles/${slug}/comments/${commentId}`,
@@ -134,43 +136,40 @@ const Comments = () => {
     }
   };
   return (
-    <div className={style.containerCard}>
-      <textarea
-        placeholder="Write a comment..."
-        value={commentBody}
-        onChange={handleCommentChange}
-      ></textarea>
+    <div className="col-xs-12 col-md-8 offset-md-2">
+      <form className="card comment-form">
+        <div className="card-block">
+          <textarea className="form-control"
+            placeholder="Write a comment..."
+            value={commentBody}
+            onChange={handleCommentChange}
+          ></textarea>
+        </div>
+        <div className="card-footer">
+          <img
+            src={image}
+            alt="Author"
+            style={{
+              height: "40px",
+              width: "40px",
+              marginLeft: "10px",
+              borderRadius: "20px",
+            }}
+          />
+          <button type="button" className="post-comment" onClick={handlePostComment}>Post Comment</button>
+        </div>
 
-      <div className={style.cardFooter}>
-        <img
-          src={image}
-          alt="Author"
-          style={{
-            height: "40px",
-            width: "40px",
-            marginLeft: "10px",
-            borderRadius: "20px",
-          }}
-        />
-        <button onClick={handlePostComment}>Post Comment</button>
-      </div>
+      </form>
 
-      <div className={style.commentsList}>
+      <div className="card-commnet">
         {comments && comments.length > 0 ? (
           comments.map((comment) => (
-            <div key={comment.id} className={`card ${style.commentItem}`}>
-              <div className="card-block" style={{ minHeight: "50px" }}>
+            <div key={comment.id} className={`card ${'commentItem'}`}>
+              <div className="card-block" >
                 <p className="card-text">{comment.body}</p>
               </div>
 
-              <div
-                className="card-footer"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
+              <div className="card-footer">
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <img
                     src={comment.author.image}
@@ -180,6 +179,8 @@ const Comments = () => {
                       height: "20px",
                       width: "20px",
                       marginRight: "8px",
+                      borderRadius: "20px",
+
                     }}
                   />
 
@@ -212,6 +213,8 @@ const Comments = () => {
       </div>
     </div>
   );
+
+
 };
 
 export default Comments;

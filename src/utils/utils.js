@@ -1,4 +1,3 @@
-import style from "../components/common/ArticleDetail.module.css";
 
 export function formatDate(isoDateString) {
   const date = new Date(isoDateString);
@@ -43,7 +42,7 @@ export const handleFavoriteRender = (favorite, slug, index) => {
         })
         .then((data) => {
           favoriteCountElement.innerHTML = `<i class="fa-solid fa-heart"></i> ${data.article.favoritesCount}`;
-          favoriteCountElement.classList.add(style.btnAdd);
+          favoriteCountElement.classList.add('btnAdd');
         })
         .catch((error) => {});
     } else {
@@ -61,7 +60,7 @@ export const handleFavoriteRender = (favorite, slug, index) => {
         })
         .then((data) => {
           favoriteCountElement.innerHTML = `<i class="fa-solid fa-heart"></i> ${data.article.favoritesCount}`;
-          favoriteCountElement.classList.remove(style.btnAdd);
+          favoriteCountElement.classList.remove('btnAdd');
           console.log(data);
         })
         .catch((error) => {

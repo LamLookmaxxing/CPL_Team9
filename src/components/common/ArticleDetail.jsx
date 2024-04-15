@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import style from "./ArticleDetail.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import Comment from "../comments/Comments";
 import axios from "axios";
-
+import './ArticleDetail.css';
 const ArticleDetail = () => {
   const { slug } = useParams();
 
@@ -259,45 +258,39 @@ const ArticleDetail = () => {
 
   // ----------------------------------------------------------------------------------------------
   return (
-    <div className={style.containerArticleDetail}>
+    <div className="aricle-page">
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className={style.containerAll}>
-          <div className={style.bannerArticleDetail}>
-            <h1>{article.title}</h1>
-            <div className={style.articleContent}>
-              <div className={style.articleImage}>
+        <div className="aricle-page">
+          <div className="banner">
+            <div className="container">
+              <h1>{article.title}</h1>
+              <div className="article-meta">
                 <img src={article.author.image} alt="Image" />
-                <div>
-                  <Link to={`/profileAuthor/${article.author.username}`}>
-                    {article.author.username}
-                  </Link>
-                  <span className="date">
-                    {new Date(article.createdAt).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                  </span>
-                </div>
-              </div>
-              <div className={style.articleButton}>
+                <Link className="author" to={`/profileAuthor/${article.author.username}`}>
+                  {article.author.username}
+                </Link>
+                <span className="date">
+                  {new Date(article.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
                 {token && article.author.username === usernameState ? (
                   <>
-                    <button onClick={handleEditClick} className="bg-success">
+                    <button onClick={handleEditClick} className="btn btn-outline-secondary btn-sm">
                       <i className="fa-solid fa-edit"></i> Edit Article
                     </button>
-                    <button onClick={handleDeleteClick} className="bg-danger">
+                    <button onClick={handleDeleteClick} className="btn btn-outline-danger btn-sm">
                       <i className="fa-solid fa-trash"></i> Delete Article
                     </button>
                   </>
                 ) : (
                   <>
                     <button
-                      className={`${style.buttonFollow} ${
-                        user.following ? style.followActive : ""
-                      }`}
+                      className={`buttonFollow ${user.following ? "followActive" : ""}`}
                       onClick={handleFollowClick}
                     >
                       <i className="fa-solid fa-plus"></i>{" "}
@@ -305,9 +298,7 @@ const ArticleDetail = () => {
                       {article.author.username}
                     </button>
                     <button
-                      className={`${style.buttonFavorite} ${
-                        article.favorited ? style.faActive : ""
-                      }`}
+                      className={`buttonFavorite ${article.favorited ? "faActive" : ""}`}
                       onClick={() => handleFavoriteClick(article.slug)}
                     >
                       <i className="fa-solid fa-heart"></i>{" "}
@@ -316,35 +307,55 @@ const ArticleDetail = () => {
                     </button>
                   </>
                 )}
+
+              </div>
+
+            </div>
+
+          </div>
+          <div className="container page">
+            <div className="row article-content">
+              <div className="col-md-12">
+                <p>{article.description}</p>
+                <p>{article.body}</p>
+                <ul className="tag-list">
+                  {article.tagList.map((tag) => (
+                    <li key={tag} className="tag-default tag-pill tag-outline">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-          </div>
-          <div className={style.containerArticleDetail}>
-            <p className={style.containerDescription}>{article.description}</p>
-            <p>{article.body}</p>
+
+            <hr />
+            <div>
+              {token ? (
+                <div
+                  className={`d-flex justify-content-center align-items-center`}
+                >
+                  <Comment></Comment>
+                </div>
+              ) : (
+                <div className={'linkSign'}>
+                  <p>
+                    <b>
+                      <i>login to comment</i>
+                    </b>
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
 
-          <div>
-            {token ? (
-              <div
-                className={`d-flex justify-content-center align-items-center`}
-              >
-                <Comment></Comment>
-              </div>
-            ) : (
-              <div className={style.linkSign}>
-                <p>
-                  <b>
-                    <i>login to comment</i>
-                  </b>
-                </p>
-              </div>
-            )}
-          </div>
         </div>
-      )}
+      )
+      }
     </div>
-  );
+  )
+
+
+
 };
 
 export default ArticleDetail;
