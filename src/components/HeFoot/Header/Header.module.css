@@ -1,0 +1,14 @@
+.imageUser {
+  width: 24px;
+  height: 26px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.nameUser {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.nameUser:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
